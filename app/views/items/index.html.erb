@@ -1,0 +1,18 @@
+<div>
+  <p>タイトルで検索</p>
+  <%= form_tag("/items/index", :method => 'get') do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '検索', :name => nil %>
+  <% end %>
+</div>
+
+<div>
+  <p>ジャンルで探す</p>
+</div>
+
+<div class = "content">
+  <p>一覧</p>
+  <% @items.each do |item| %>
+    <%= link_to(item.title, "/items/#{item.id}") %><br>
+  <% end %>
+</div>

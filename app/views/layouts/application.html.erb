@@ -7,9 +7,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
+    <ul>
+      <li><%= link_to('新規登録', "/users/sign_up") %></li>
+      <li><%= link_to('ログイン' ,"/users/sign_in") %></li>
+      <li><%= link_to('ログアウト', destroy_user_session_path, method: :delete) %></li>
+      <li><%= link_to('商品を探す', "/items/index") %></li>
+    </ul>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,21 @@
+<h1><%= @item.title %></h1>
+<div class = "image">
+  <%= image_tag("#{@item.image}", :size => '120x200') %>
+</div>
+<div class = "comment">
+  概要：<%= @item.comment %>
+</div>
+
+<div>
+  <% if Like.find_by(user_id: current_user.id, item_id: @item.id) %>
+    <%= link_to("/likes/#{@item.id}/destroy", {method: "post"}) do %>
+      <span class="fa fa-shopping-cart fa-lg cart-unlike">カートから外す</span>
+    <% end %>
+  <% else %>
+    <%= link_to("/likes/#{@item.id}/create", {method: "post"}) do %>
+      <span class="fa fa-cart-arrow-down fa-lg cart-like">カートに入れる</span>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to("ホームに戻る", items_index_path) %>
